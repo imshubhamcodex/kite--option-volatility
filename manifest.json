@@ -1,0 +1,20 @@
+{
+    "name": "Volatility Index",
+    "version": "0.0.0",
+    "manifest_version": 2,
+    "content_scripts" : [
+		{	
+			"matches" : [
+				"https://kite.zerodha.com/*"
+			],
+			"js" : ["main.js"]
+		}
+	],
+    "background" : {
+		"scripts": ["background.js"]
+	},
+	"permissions": ["storage","activeTab"],
+    "browser_action" : {
+		"default_icon" : "pp.png"
+	}
+}
