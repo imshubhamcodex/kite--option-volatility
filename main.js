@@ -12,15 +12,12 @@ const updatePriceDifferenceSpans = (lastPrices, newPrices) => {
   const priceElements = Array.from(listFlat.children);
 
   priceElements.forEach((element, i) => {
-    const newPrice = Number(
-      element.querySelector(".price").innerText.split(":")[0]
-    );
+    const newPrice = Number(element.querySelector(".price").innerText);
     const priceChange = newPrice - lastPrices[i];
-    element.querySelector(".price").innerHTML +=
-      '<span class="diff-span" style="font-size: 12px;"> &nbsp;' +
-      ": " +
-      ` (${priceChange.toFixed(1)}) ` +
-      "</span>";
+    element.querySelector(".symbol-wrapper").innerHTML +=
+      '<a class="diff-span"> &nbsp;' +
+      `(${priceChange.toFixed(1)})` +
+      "</a>";
   });
 };
 
@@ -30,9 +27,7 @@ const updateLastPrices = () => {
   const priceElements = Array.from(listFlat.children);
 
   return priceElements.map(element => {
-    const price = Number(
-      element.querySelector(".price").innerText.split(":")[0]
-    );
+    const price = Number(element.querySelector(".price").innerText);
     return price;
   });
 };
@@ -67,7 +62,6 @@ const gotMessage = (message, sender, sendResponse) => {
     console.log("Activated");
     console.log("Made by shubhamcodex");
 
-    removeElementsByClassName("change-indicator icon");
     setInterval(main, 1000 * 10);
   }
 };
